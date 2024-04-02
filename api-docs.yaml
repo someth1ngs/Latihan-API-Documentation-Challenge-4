@@ -1,0 +1,125 @@
+openapi: 3.0.1
+info:
+  title: Latihan API DOCUMENTATION
+  version: 1.0.0
+  contact:
+    email: adewanggan@gmail.com
+servers:
+  - url: http://localhost:3000/api/v1
+tags:
+  - name: Users
+    description: Everything about your Users
+paths:
+  /users:
+    post:
+      tags:
+        - "Users"
+      summary: register new user
+      description: mendaftarkan user baru kedalam database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: guntur
+                email:
+                  type: string
+                  example: guntur@gmail.com
+                password:
+                  type: string
+                  example: guntur123
+      responses:
+        "201":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2
+                      name:
+                        type: string
+                        example: agung
+                      email:
+                        type: string
+                        example: agung
+                      password:
+                        type: string
+                        example: agung123
+        "400":
+          description: Duplicate Email
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Email already used
+
+    get:
+      tags:
+        - "Users"
+      summary: get all users
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: string
+                    example: agung
+  /users/{user_id}:
+    get:
+      tags:
+        - "Users"
+      summary: get all users
+      parameters:
+        - schema:
+            type: integer
+          name: user_id
+          in: path
+          required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: string
+                    example: agung
