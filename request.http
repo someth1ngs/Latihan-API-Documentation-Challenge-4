@@ -14,10 +14,10 @@ Content-Type: application/json
 }
 
 ### GET - menampilkan daftar users.
-GET http://localhost:3000/api/v1/users
+GET http://localhost:3000/api/v1/users?search=dewangga
 
 ### GET - menampilkan detail informasi user (tampilkan juga profilnya).
-GET http://localhost:3000/api/v1/users/5
+GET http://localhost:3000/api/v1/users/1
 
 ############################
 

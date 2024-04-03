@@ -46,20 +46,21 @@ paths:
                     type: string
                     example: OK
                   data:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                        example: 2
-                      name:
-                        type: string
-                        example: agung
-                      email:
-                        type: string
-                        example: agung
-                      password:
-                        type: string
-                        example: agung123
+                    $ref: "#/components/schemas/Users"
+                    # type: object
+                    # properties:
+                    #   id:
+                    #     type: integer
+                    #     example: 2
+                    #   name:
+                    #     type: string
+                    #     example: agung
+                    #   email:
+                    #     type: string
+                    #     example: agung
+                    #   password:
+                    #     type: string
+                    #     example: agung123
         "400":
           description: Duplicate Email
           content:
@@ -78,6 +79,11 @@ paths:
       tags:
         - "Users"
       summary: get all users
+      parameters:
+        - schema:
+            type: string
+          name: search
+          in: query
       responses:
         200:
           description: success
@@ -93,8 +99,7 @@ paths:
                     type: string
                     example: OK
                   data:
-                    type: string
-                    example: agung
+                    $ref: "#/components/schemas/Users"
   /users/{user_id}:
     get:
       tags:
@@ -123,3 +128,22 @@ paths:
                   data:
                     type: string
                     example: agung
+
+components:
+  schemas:
+    Users:
+      title: Users
+      type: object
+      properties: 
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Dewangga
+        email:
+          type: string
+          example: dewangga@gmail.com
+        password:
+          type: string
+          example: dewangga123

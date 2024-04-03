@@ -44,7 +44,10 @@ module.exports = {
 
   index: async (req, res, next) => {
     try {
+      let { search } = req.query;
+
       let users = await prisma.user.findMany({
+        where: { name: { contains: search } },
         orderBy: { id: "asc" },
       });
 
