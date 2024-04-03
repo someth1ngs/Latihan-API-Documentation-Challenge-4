@@ -2,15 +2,16 @@
 
 ### Post - menambahkan user baru beserta dengan profilnya.
 POST http://localhost:3000/api/v1/users
+Authorization: Bearer token
 Content-Type: application/json
 
 {
-    "name": "Andhika",
-    "email": "andhika@gmail.com",
-    "password": "andhika",
-    "identity_type": "SIM",
-    "identity_number": "0000000000000005",
-    "address": "Jalan Menuju Javascript"
+    "name": "Dewangga",
+    "email": "dewangga@gmail.com",
+    "password": "dewangga123",
+    "identity_type": "KTP",
+    "identity_number": "0000000000000000",
+    "address": "Jalan Banyu Urip"
 }
 
 ### GET - menampilkan daftar users.
