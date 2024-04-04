@@ -6,12 +6,12 @@ Authorization: Bearer token
 Content-Type: application/json
 
 {
-    "name": "Dewangga",
-    "email": "dewangga@gmail.com",
-    "password": "dewangga123",
+    "name": "Abiyyi",
+    "email": "abiyyi@gmail.com",
+    "password": "abiyyi123",
     "identity_type": "KTP",
-    "identity_number": "0000000000000000",
-    "address": "Jalan Banyu Urip"
+    "identity_number": "0000000000000111",
+    "address": "Jalan menuju sidoarjo"
 }
 
 ### GET - menampilkan daftar users.

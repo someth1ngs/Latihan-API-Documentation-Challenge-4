@@ -33,6 +33,16 @@ paths:
                 password:
                   type: string
                   example: dewangga123
+                identity_type:
+                  type: string
+                  example: KTP
+                identity_number:
+                  type: string
+                  example: "0000000000000000"
+                address:
+                  type: string
+                  example: Jalan Banyu Urip
+                
       responses:
         "201":
           description: Success
@@ -48,7 +58,29 @@ paths:
                     type: string
                     example: OK
                   data:
-                    $ref: "#/components/schemas/Users"
+                    allOf:
+                      - $ref: "#/components/schemas/Users"
+                      - type: object
+                        properties:
+                          profiles:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              identity_type:
+                                type: string
+                                example: KTP
+                              identity_number:
+                                type: string
+                                example: "0000000000000000"
+                              address:
+                                type: string
+                                example: Jalan Banyu Urip
+                              user_id:
+                                type: integer
+                                example: 1
+
         "400":
           description: Duplicate Email
           content:
@@ -163,7 +195,6 @@ components:
       bearerFormat: JWT
   schemas:
     Users:
-      title: Users
       type: object
       properties: 
         id:
