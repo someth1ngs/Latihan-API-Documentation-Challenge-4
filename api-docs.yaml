@@ -9,13 +9,15 @@ servers:
 tags:
   - name: Users
     description: Everything about your Users
+  - name: Accounts
+    description: Everything about your Accounts
 paths:
   /users:
     post:
       tags:
         - "Users"
-      summary: register new user
-      description: mendaftarkan user baru kedalam database
+      summary: register new User
+      description: mendaftarkan User baru kedalam database
       requestBody:
         content:
           application/json:
@@ -47,20 +49,6 @@ paths:
                     example: OK
                   data:
                     $ref: "#/components/schemas/Users"
-                    # type: object
-                    # properties:
-                    #   id:
-                    #     type: integer
-                    #     example: 2
-                    #   name:
-                    #     type: string
-                    #     example: agung
-                    #   email:
-                    #     type: string
-                    #     example: agung
-                    #   password:
-                    #     type: string
-                    #     example: agung123
         "400":
           description: Duplicate Email
           content:
@@ -101,7 +89,10 @@ paths:
                     type: string
                     example: OK
                   data:
-                    $ref: "#/components/schemas/Users"
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Users"
+
   /users/{user_id}:
     get:
       tags:
@@ -128,8 +119,20 @@ paths:
                     type: string
                     example: OK
                   data:
+                    $ref: "#/components/schemas/Users"
+        400:
+          description: User_id tidak ditemukan/tidak valid!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
                     type: string
-                    example: agung
+                    example: User tidak ditemukan dengan userId 10
 
 components:
   securitySchemes:
