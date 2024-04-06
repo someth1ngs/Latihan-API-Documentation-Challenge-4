@@ -42,7 +42,7 @@ paths:
                 address:
                   type: string
                   example: Jalan Banyu Urip
-                
+
       responses:
         201:
           description: Success
@@ -96,7 +96,7 @@ paths:
                     example: Email already used
       security:
         - bearerAuth: []
-      
+
     get:
       tags:
         - "Users"
@@ -173,6 +173,7 @@ paths:
                               user_id:
                                 type: integer
                                 example: 1
+
         400:
           description: User_id tidak ditemukan/tidak valid!
           content:
@@ -186,6 +187,7 @@ paths:
                   message:
                     type: string
                     example: User tidak ditemukan dengan userId 100
+
   /accounts:
     post:
       tags:
@@ -201,15 +203,16 @@ paths:
                 bank_name:
                   type: string
                   example: Mandiri
-                bank_account_number: 
+                bank_account_number:
                   type: string
                   example: "91827364501"
-                balance: 
+                balance:
                   type: integer
                   example: 5000000
                 user_id:
                   type: integer
                   example: 5
+
       responses:
         201:
           description: Success
@@ -225,7 +228,8 @@ paths:
                     type: string
                     example: OK
                   data:
-                     $ref: '#/components/schemas/Accounts'
+                    $ref: "#/components/schemas/Accounts"
+
         404:
           description: user_id tidak dapat ditemukan!
           content:
@@ -242,7 +246,28 @@ paths:
       security:
         - bearerAuth: []
 
-                
+    get:
+      tags:
+        - "Accounts"
+      summary: get all accounts
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Accounts"
 components:
   securitySchemes:
     bearerAuth:
@@ -252,7 +277,7 @@ components:
   schemas:
     Users:
       type: object
-      properties: 
+      properties:
         id:
           type: integer
           example: 1
@@ -275,10 +300,10 @@ components:
         bank_name:
           type: string
           example: Mandiri
-        bank_account_number: 
+        bank_account_number:
           type: string
           example: "91827364501"
-        balance: 
+        balance:
           type: integer
           example: 5000000
         user_id:
