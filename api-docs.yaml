@@ -16,8 +16,8 @@ paths:
     post:
       tags:
         - "Users"
-      summary: register new User
-      description: mendaftarkan User baru kedalam database
+      summary: register new Users
+      description: mendaftarkan Users baru kedalam database
       requestBody:
         content:
           application/json:
@@ -44,14 +44,14 @@ paths:
                   example: Jalan Banyu Urip
                 
       responses:
-        "201":
+        201:
           description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  success:
+                  status:
                     type: boolean
                     example: true
                   message:
@@ -81,14 +81,14 @@ paths:
                                 type: integer
                                 example: 1
 
-        "400":
+        400:
           description: Duplicate Email
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  success:
+                  status:
                     type: boolean
                     example: false
                   message:
@@ -186,7 +186,63 @@ paths:
                   message:
                     type: string
                     example: User tidak ditemukan dengan userId 100
+  /accounts:
+    post:
+      tags:
+        - "Accounts"
+      summary: register new Accounts
+      description: mendaftarkan Accounts baru kedalam database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bank_name:
+                  type: string
+                  example: Mandiri
+                bank_account_number: 
+                  type: string
+                  example: "91827364501"
+                balance: 
+                  type: integer
+                  example: 5000000
+                user_id:
+                  type: integer
+                  example: 5
+      responses:
+        201:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                     $ref: '#/components/schemas/Accounts'
+        404:
+          description: user_id tidak dapat ditemukan!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: User dengan id 5 tidak dapat ditemukan
+      security:
+        - bearerAuth: []
 
+                
 components:
   securitySchemes:
     bearerAuth:
@@ -210,3 +266,21 @@ components:
           type: string
           example: dewangga123
 
+    Accounts:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 8
+        bank_name:
+          type: string
+          example: Mandiri
+        bank_account_number: 
+          type: string
+          example: "91827364501"
+        balance: 
+          type: integer
+          example: 5000000
+        user_id:
+          type: integer
+          example: 5
