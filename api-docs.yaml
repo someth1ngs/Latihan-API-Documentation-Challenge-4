@@ -283,11 +283,12 @@ paths:
                       - type: object
                         properties:
                           user:
-                            $ref: "#/components/schemas/Users"
-                          # profile:
-                          #   type: object
-                            
-
+                            allOf:
+                            - $ref: "#/components/schemas/Users"
+                            - type: object
+                              properties:
+                                profile:
+                                  $ref: "#/components/schemas/Profiles"
 
 components:
   securitySchemes:
