@@ -260,7 +260,7 @@ paths:
       parameters:
         - schema:
             type: integer
-          name: user_id
+          name: account_id
           in: path
           required: true
       responses:
@@ -289,6 +289,20 @@ paths:
                               properties:
                                 profile:
                                   $ref: "#/components/schemas/Profiles"
+          
+        400:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Akun tidak ditemukan dengan id Akun 100
 
 components:
   securitySchemes:

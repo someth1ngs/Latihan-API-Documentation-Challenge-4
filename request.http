@@ -40,7 +40,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/v1/accounts
 
 ### GET - menampilkan detail akun.
-GET http://localhost:3000/api/v1/accounts/1
+GET http://localhost:3000/api/v1/accounts/100
 
 ############################
 
