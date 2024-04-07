@@ -62,7 +62,7 @@ paths:
                       - $ref: "#/components/schemas/Users"
                       - type: object
                         properties:
-                          profiles:
+                          profile:
                             type: object
                             properties:
                               id:
@@ -155,24 +155,8 @@ paths:
                       - $ref: "#/components/schemas/Users"
                       - type: object
                         properties:
-                          profiles:
-                            type: object
-                            properties:
-                              id:
-                                type: integer
-                                example: 1
-                              identity_type:
-                                type: string
-                                example: KTP
-                              identity_number:
-                                type: string
-                                example: "0000000000000000"
-                              address:
-                                type: string
-                                example: Jalan Banyu Urip
-                              user_id:
-                                type: integer
-                                example: 1
+                          profile:
+                            $ref: "#/components/schemas/Profiles"
 
         400:
           description: User_id tidak ditemukan/tidak valid!
@@ -299,23 +283,12 @@ paths:
                       - type: object
                         properties:
                           user:
-                            type: object
-                            properties:
-                              id:
-                                type: integer
-                                example: 1
-                              identity_type:
-                                type: string
-                                example: KTP
-                              identity_number:
-                                type: string
-                                example: "0000000000000000"
-                              address:
-                                type: string
-                                example: Jalan Banyu Urip
-                              user_id:
-                                type: integer
-                                example: 1
+                            $ref: "#/components/schemas/Users"
+                          # profile:
+                          #   type: object
+                            
+
+
 components:
   securitySchemes:
     bearerAuth:
@@ -344,16 +317,35 @@ components:
       properties:
         id:
           type: integer
-          example: 8
+          example: 1
         bank_name:
           type: string
-          example: Mandiri
+          example: BCA
         bank_account_number:
           type: string
-          example: "91827364501"
+          example: "24810030912"
         balance:
           type: integer
           example: 5000000
         user_id:
           type: integer
-          example: 5
+          example: 1
+    
+    Profiles:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        identity_type:
+          type: string
+          example: KTP
+        identity_number:
+          type: string
+          example: "0000000000000000"
+        address:
+          type: string
+          example: Jalan Banyu Urip
+        user_id:
+          type: integer
+          example: 1
