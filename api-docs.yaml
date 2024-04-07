@@ -1,6 +1,7 @@
 openapi: 3.0.1
 info:
   title: Latihan API DOCUMENTATION
+  description: Latihan untuk challenge 5, dimana penerapan documentation API pada challenge sebelumnya yaitu tentang Bank System
   version: 1.0.0
   contact:
     email: adewanggan@gmail.com
@@ -11,6 +12,8 @@ tags:
     description: Everything about your Users
   - name: Accounts
     description: Everything about your Accounts
+  - name: Transactions
+    description: Everything about Transactions
 paths:
   /users:
     post:
@@ -63,23 +66,7 @@ paths:
                       - type: object
                         properties:
                           profile:
-                            type: object
-                            properties:
-                              id:
-                                type: integer
-                                example: 1
-                              identity_type:
-                                type: string
-                                example: KTP
-                              identity_number:
-                                type: string
-                                example: "0000000000000000"
-                              address:
-                                type: string
-                                example: Jalan Banyu Urip
-                              user_id:
-                                type: integer
-                                example: 1
+                            $ref: "#/components/schemas/Profiles"
 
         400:
           description: Duplicate Email
@@ -227,6 +214,7 @@ paths:
                   message:
                     type: string
                     example: User dengan id 5 tidak dapat ditemukan
+
       security:
         - bearerAuth: []
 
@@ -252,6 +240,7 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/Accounts"
+
   /accounts/{account_id}:
     get:
       tags:
@@ -310,6 +299,7 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+  
   schemas:
     Users:
       type: object
