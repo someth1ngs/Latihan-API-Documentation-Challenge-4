@@ -53,7 +53,7 @@ module.exports = {
 
       if(users.length === 0){
         res.status(400).json({
-          status:false,
+          status: false,
           message: `Users dengan nama ${search} tidak ada!`
         })
       }

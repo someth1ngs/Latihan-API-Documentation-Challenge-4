@@ -112,6 +112,20 @@ paths:
                     items:
                       $ref: "#/components/schemas/Users"
 
+        400:
+          description: user dengan nama tersebut tidak ada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Users dengan nama test tidak ada
+
   /users/{user_id}:
     get:
       tags:
