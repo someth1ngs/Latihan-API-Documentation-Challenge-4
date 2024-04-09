@@ -292,6 +292,58 @@ paths:
                   message:
                     type: string
                     example: Akun tidak ditemukan dengan id Akun 100
+  
+  /transactions:
+    post:
+      tags:
+        - "Transactions"
+      summary: register new Transactions
+      description: mendaftarkan transaksi baru kedalam database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source_account_id:
+                  type: integer
+                  example: 6
+                destination_account_id:
+                  type: integer
+                  example: 5
+                amount:
+                  type: integer
+                  example: 100000
+      
+      responses:
+        201:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Transfer Sukses
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 14
+                      amount:
+                        type: integer
+                        example: 100000
+                      source_account_id:
+                        type: integer
+                        example: 6
+                      destination_account_id:
+                        type: integer
+                        example: 5
 
 components:
   securitySchemes:
