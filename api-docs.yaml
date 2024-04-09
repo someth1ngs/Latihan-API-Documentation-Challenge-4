@@ -359,6 +359,9 @@ paths:
                         type: integer
                         example: 5
 
+      security:
+        - bearerAuth: []
+
 components:
   securitySchemes:
     bearerAuth:

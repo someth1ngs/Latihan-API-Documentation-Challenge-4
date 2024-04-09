@@ -28,12 +28,12 @@ router.get("/users", userController.index);
 router.get("/users/:userId", userController.show);
 
 // API Account //
-router.post("/accounts", accountController.store);
+router.post("/accounts", auth, accountController.store);
 router.get("/accounts", accountController.index);
 router.get("/accounts/:id", accountController.show);
 
 // API Transaction //
-router.post("/transactions", transactionsController.store);
+router.post("/transactions", auth, transactionsController.store);
 router.get("/transactions", transactionsController.index);
 router.get("/transactions/:id", transactionsController.show);
 

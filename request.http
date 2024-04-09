@@ -27,6 +27,7 @@ GET http://localhost:3000/api/v1/users/3
 
 ### POST - menambahkan akun baru ke user yang sudah didaftarkan.
 POST http://localhost:3000/api/v1/accounts
+Authorization: Bearer token
 Content-Type: application/json
 
 {
@@ -49,6 +50,7 @@ GET http://localhost:3000/api/v1/accounts/100
 
 ### POST - mengirimkan uang dari 1 akun ke akun lain (tentukan request body nya).
 POST http://localhost:3000/api/v1/transactions
+Authorization: Bearer token
 Content-Type: application/json
 
 {
