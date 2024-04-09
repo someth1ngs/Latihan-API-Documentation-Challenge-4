@@ -59,7 +59,7 @@ paths:
                     example: true
                   message:
                     type: string
-                    example: OK
+                    example: User dan Profile berhasil didaftarkan
                   data:
                     allOf:
                       - $ref: "#/components/schemas/Users"
@@ -106,7 +106,7 @@ paths:
                     example: true
                   message:
                     type: string
-                    example: OK
+                    example: Berhasil mengambil data Users
                   data:
                     type: array
                     items:
