@@ -361,6 +361,42 @@ paths:
 
       security:
         - bearerAuth: []
+    
+    get:
+      tags:
+        - "Transactions"
+      summary: Get All Transactions
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties: 
+                        id:
+                          type: integer
+                          example: 1
+                        amount:
+                          type: integer
+                          example: 100000
+                        source_account_id:
+                          type: integer
+                          example: 1
+                        destination_account_id:
+                          type: integer
+                          example: 2
 
 components:
   securitySchemes:
