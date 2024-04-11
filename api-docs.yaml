@@ -429,9 +429,25 @@ paths:
                     - type: object
                     properties:
                       sourceAccounts:
-                        allOf:
-                          - $ref: "#/components/schemas/Accounts"
-                          - $ref: "#/components/schemas/Accounts2"
+                        $ref: "#/components/schemas/Accounts"
+                      destinationAccounts:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2
+                          bank_name:
+                            type: string
+                            example: BNI
+                          bank_account_number:
+                            type: string
+                            example: "12143208019"
+                          balance:
+                            type: integer
+                            example: 2000000
+                          user_id:
+                            type: integer
+                            example: 2
 
 
 components:
@@ -476,25 +492,6 @@ components:
         user_id:
           type: integer
           example: 1
-      
-    Accounts2:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 2
-        bank_name:
-          type: string
-          example: BNI
-        bank_account_number:
-          type: string
-          example: "12143208019"
-        balance:
-          type: integer
-          example: 2000000
-        user_id:
-          type: integer
-          example: 2
     
     Profiles:
       type: object
