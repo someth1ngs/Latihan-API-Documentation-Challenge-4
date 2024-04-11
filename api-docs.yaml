@@ -397,6 +397,42 @@ paths:
                         destination_account_id:
                           type: integer
                           example: 2
+  
+  /transactions/{transaction_id}:
+    get:
+      tags:
+        - "Transactions"
+      summary: Get Detail Transactions
+      parameters:
+        - schema:
+            type: integer
+          name: transaction_id
+          in: path
+          required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    allOf:
+                    - $ref: "#/components/schemas/Transactions"
+                    - type: object
+                    properties:
+                      sourceAccounts:
+                        allOf:
+                          - $ref: "#/components/schemas/Accounts"
+                          - $ref: "#/components/schemas/Accounts2"
+
 
 components:
   securitySchemes:
@@ -440,6 +476,25 @@ components:
         user_id:
           type: integer
           example: 1
+      
+    Accounts2:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 2
+        bank_name:
+          type: string
+          example: BNI
+        bank_account_number:
+          type: string
+          example: "12143208019"
+        balance:
+          type: integer
+          example: 2000000
+        user_id:
+          type: integer
+          example: 2
     
     Profiles:
       type: object
@@ -459,3 +514,19 @@ components:
         user_id:
           type: integer
           example: 1
+
+    Transactions:
+      type: object
+      properties: 
+        id:
+          type: integer
+          example: 1
+        amount:
+          type: integer
+          example: 100000
+        source_account_id:
+          type: integer
+          example: 1
+        destination_account_id:
+          type: integer
+          example: 2

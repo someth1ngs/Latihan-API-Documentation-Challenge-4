@@ -63,6 +63,6 @@ Content-Type: application/json
 GET http://localhost:3000/api/v1/transactions
 
 ### GET - menampilkan detail transaksi (tampilkan juga pengirim dan penerimanya).
-GET http://localhost:3000/api/v1/transactions/13
+GET http://localhost:3000/api/v1/transactions/1
 
 ############################
